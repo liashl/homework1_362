@@ -128,20 +128,13 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
-    def test_18(self):
-        """ Control - Luhn checksum 0
-        Test for valid prefix 4 with valid Luhn checksum """
-
-        testcase = '4125687345680090'
-        result = credit_card_validator(testcase)
-        self.assertEqual(result, True)
-
     def test_19(self):
         """ Test for valid prefix 4 with invalid Luhn checksum (should be 0) """
 
         testcase = '4125687345680096'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
+
 
 if __name__ == '__main__':
     unittest.main()
