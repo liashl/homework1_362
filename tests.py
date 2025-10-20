@@ -18,8 +18,7 @@ class BlackBoxTest(unittest.TestCase):
 
         testcase = '01234567890123456'
         result = credit_card_validator(testcase)
-        self.assertEqual(result,False)
-
+        self.assertEqual(result, False)
 
     def test_02(self):
         """ 
@@ -27,7 +26,7 @@ class BlackBoxTest(unittest.TestCase):
         Expects False
         """
 
-        testcase = '01234567890123' 
+        testcase = '01234567890125'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
@@ -107,6 +106,13 @@ class BlackBoxTest(unittest.TestCase):
         testcase = "2720012301230124"
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
+
+    def test_15(self):
+        """ Test for valid prefix with incorrect length (4, 15 digits) """
+
+        testcase = "411111111111116"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
 
 
 if __name__ == '__main__':
