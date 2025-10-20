@@ -27,6 +27,13 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
+    def test_01c(self):
+        """ Test numeric (integer) input """
+        testcase= 5201234567890125
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
+
     def test_01(self):
         """ Test for otherwise valid number greater than 16 digits in length. Expects False """
 
