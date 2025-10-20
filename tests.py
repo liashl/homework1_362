@@ -60,16 +60,30 @@ class BlackBoxTest(unittest.TestCase):
         self.assertEqual(result, False)
 
     def test_07(self):
-        """ Tests for each prefix range - 2221-2720, valid """
+        """ Tests for valid 16-digit numbers beginning with a prefix between [2221-2720] inclusive """
 
         testcase = "2222111111111163"
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
 
     def test_08(self):
-        """ Tests for each prefix range - 4-, valid """
+        """ Tests for valid 16-digit numbers beginning with 4 """
 
         testcase = "4111111111111111"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, True)
+
+    def test_10(self):
+        """ Tests for valid 16-digit numbers beginning with prefix [51-55] inclusive """
+
+        testcase = "5201234567890123"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, True)
+
+    def test_11(self):
+        """ Tests for a valid 15-digit numer that begins with the prefix 34 """
+
+        testcase = "340123456789014"
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
 
