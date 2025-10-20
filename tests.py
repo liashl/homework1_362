@@ -69,7 +69,7 @@ class BlackBoxTest(unittest.TestCase):
     def test_08(self):
         """ Tests for each prefix range - 4-, valid """
 
-        testcase = "4111111111111119"
+        testcase = "4111111111111118"
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
 
