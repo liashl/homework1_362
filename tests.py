@@ -114,6 +114,13 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
+    def test_16(self):
+        """ Test for valid prefix with incorrect length [51, 55] inclusive, 15 digits"""
+
+        testcase = '511111111111115'
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
 
 if __name__ == '__main__':
     unittest.main()
