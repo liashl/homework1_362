@@ -9,6 +9,7 @@ Due Date: October 20, 2025
 import unittest
 from credit_card_validator import credit_card_validator
 
+
 class BlackBoxTest(unittest.TestCase):
     """ Searching for errors in the implementation of credit card verification function """
 
@@ -30,6 +31,26 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertEqual(result,False)
 
+    def test_03(self):
+        """ Tests for 16-number credit card strings that do not start with 4, 51-55, or 2221-2720 inclusive """
+
+        testcase = '7012345678902345'
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
+    def test_04(self):
+        """ Tests for a 15-number credit card string that does not start with 34 or 37"""
+
+        testcase = '012345678901234'
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
+    def test_05(self):
+        """ Tests for a 15-digit number credit card string that starts with 3 but not with 34 or 37 """
+
+        testcase = '301234567890123'
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
 
 if __name__ == '__main__':
     unittest.main()
