@@ -7,6 +7,7 @@ Due Date: October 20, 2025
 
 """
 import unittest
+from credit_card_validator import credit_card_validator
 
 class BlackBoxTest(unittest.TestCase):
     """ Searching for errors in the implementation of credit card verification function """
