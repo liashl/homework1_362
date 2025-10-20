@@ -29,7 +29,7 @@ class BlackBoxTest(unittest.TestCase):
 
         testcase = '01234567890123' 
         result = credit_card_validator(testcase)
-        self.assertEqual(result,False)
+        self.assertEqual(result, False)
 
     def test_03(self):
         """ Tests for 16-number credit card strings that do not start with 4, 51-55, or 2221-2720 inclusive """
@@ -51,6 +51,20 @@ class BlackBoxTest(unittest.TestCase):
         testcase = '301234567890123'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
+
+    def test_06(self):
+        """ Tests for a 16-digit number between 2221 and 2720 inclusive that fails the Luhn checksum test"""
+
+        testcase = '222111111111111'
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
+    def test_07(self):
+        """ Tests for each prefix range """
+
+        testcase = "2222111111111163"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, True)
 
 if __name__ == '__main__':
     unittest.main()
