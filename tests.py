@@ -81,11 +81,33 @@ class BlackBoxTest(unittest.TestCase):
         self.assertEqual(result, True)
 
     def test_11(self):
-        """ Tests for a valid 15-digit numer that begins with the prefix 34 """
+        """ Tests for a valid 15-digit number that begins with the prefix 34 """
 
         testcase = "340123456789014"
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
+
+    def test_12(self):
+        """ Tests for a valid 15-digit number that begins with the prefix 37 """
+
+        testcase = "370123456789017"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, True)
+
+    def test_13(self):
+        """ Edge case testing for valid 16-digit number beginning with the prefix 2221 """
+
+        testcase = "2221012301230128"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, True)
+
+    def test_14(self):
+        """ Edge case testing for valid 16-digit number beginning with the prefix 2720 """
+
+        testcase = "2720012301230124"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, True)
+
 
 if __name__ == '__main__':
     unittest.main()
