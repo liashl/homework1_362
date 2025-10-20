@@ -14,56 +14,61 @@ class BlackBoxTest(unittest.TestCase):
     """ Searching for errors in the implementation of credit card verification function """
 
     def test_01(self):
-        """ Partition Test for strings of credit card numbers greater than 16 digits in length """
+        """ Test for otherwise valid number greater than 16 digits in length. Expects False """
 
-        testcase = '01234567890123456'
+        testcase = '01234567890123452'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
     def test_02(self):
-        """ 
-        Partition Test for strings of credit card numbers less than 15 digits in length
-        Expects False
-        """
+        """ Test for otherwise valid number less than 15 digits in length. Expects False """
 
-        testcase = '01234567890125'
+        testcase = '01234567890128'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
     def test_03(self):
-        """ Tests for 16-number credit card strings that do not start with 4, 51-55, or 2221-2720 inclusive """
+        """ Tests for otherwise valid 16-digit number with prefix > 55. Expects False """
 
-        testcase = '7012345678902345'
+        testcase = '7012345678902347'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
     def test_04(self):
-        """ Tests for a 15-number credit card string that does not start with 34 or 37"""
+        """ Tests for an otherwise valid 15-digit string that does not start with a 3. Expects False """
 
-        testcase = '012345678901234'
+        testcase = '012345678901237'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
     def test_05(self):
-        """ Tests for a 15-digit number credit card string that starts with 3 but not with 34 or 37 """
+        """ Tests for otherwise valid 15-digit string that starts with 3 but not with 34 or 37. Expects False """
 
-        testcase = '301234567890123'
+        testcase = '301234567890125'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
     def test_06(self):
-        """ Tests for a 16-digit number between 2221 and 2720 inclusive that fails the Luhn checksum test"""
+        """ Tests for invalid 16-digit number with prefix between 2221 and 2720 inclusive """
 
         testcase = '222111111111111'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
     def test_07(self):
-        """ Tests for valid 16-digit numbers beginning with a prefix between [2221-2720] inclusive """
+        """ Tests for valid 16-digit numbers with prefix between [2221-2720] inclusive """
 
-        testcase = "2222111111111163"
+        testcase = "2222111111111160"
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
+
+    def test_08_a(self):
+        """ Tests for invalid 16-digit number beginning with a 4"""
+
+        testcase = "4111111111111116"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
 
     def test_08(self):
         """ Tests for valid 16-digit numbers beginning with 4 """
@@ -72,10 +77,24 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
 
+    def test_09(self):
+        """ Tests for an invalid 16-digit number beginning with prefix [51-55] inclusive. Expects False """
+
+        testcase = "5201234567890127"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
     def test_10(self):
         """ Tests for valid 16-digit numbers beginning with prefix [51-55] inclusive """
 
-        testcase = "5201234567890123"
+        testcase = "5201234567890125"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, True)
+
+    def test_11_a(self):
+        """ Tests for an invalid 15-digit number that begins with the prefix 34. Expects False"""
+
+        testcase = "340123456789012"
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
 
@@ -86,6 +105,13 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
 
+    def test_12_a(self):
+        """ Tests for an invalid 15-digit number that begins with the prefix 37. Expects False """
+
+        testcase = "370123456789016"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
     def test_12(self):
         """ Tests for a valid 15-digit number that begins with the prefix 37 """
 
@@ -93,12 +119,26 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
 
+    def test_13_a(self):
+        """ Edge case testing for an invalid 16-digit number beginning with the prefix 2221. Expects False """
+
+        testcase = "2221012301230129"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
     def test_13(self):
         """ Edge case testing for valid 16-digit number beginning with the prefix 2221 """
 
         testcase = "2221012301230128"
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
+
+    def test_14_a(self):
+        """ Edge case testing for invalid 16-digit number beginning with the prefix 2720. Expects False """
+
+        testcase = "2720012301230128"
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
 
     def test_14(self):
         """ Edge case testing for valid 16-digit number beginning with the prefix 2720 """
