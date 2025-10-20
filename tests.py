@@ -13,6 +13,20 @@ from credit_card_validator import credit_card_validator
 class BlackBoxTest(unittest.TestCase):
     """ Searching for errors in the implementation of credit card verification function """
 
+    def test_01a(self):
+        """ Tests very short invalid number """
+
+        testcase = '000'
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
+    def test_01b(self): 
+        """ Test very long invalid number """
+
+        testcase = '11111111111111111111111111111111111111111111111111'
+        result = credit_card_validator(testcase)
+        self.assertEqual(result, False)
+
     def test_01(self):
         """ Test for otherwise valid number greater than 16 digits in length. Expects False """
 
