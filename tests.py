@@ -790,6 +790,102 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
+    def test_86(self):
+        """ Extended partition testing - length: 17 or more,
+        prefix: less than 2221, checksum: valid """
+
+        testcase = '22202220222022208'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_87(self):
+        """ Extended partition testing - length: 17 or more,
+        prefix: less than 2221, checksum: invalid """
+
+        testcase = '22202220222022209'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_88(self):
+        """ Extended partition testing: length: 17 or more,
+        Prefix: 2221 to 2720, checksum: valid """
+
+        testcase = '22222222222222222'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_89(self):
+        """ Extended partition testing: length: 17 or more,
+        Prefix: 2221 to 2720, checksum: invalid """
+
+        testcase = '22222222222222226'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_90(self):
+        """ Extended partition testing - length: 17 or more,
+        prefix: 2720 to 33, checksum: valid """
+
+        testcase = '27211111111111111'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_91(self):
+        """ Extended partition testing - length: 17 or more,
+        prefix: 2720 to 33, checksum: invalid"""
+
+        testcase = '27211111111111114'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_92(self):
+        """ Extended partition testing - length: 17 or more,
+        prefix: 34, checksum: valid """
+
+        testcase = '34555555555555557'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_93(self):
+        """ Extended partition testing - length: 17 or more,
+        prefix: 34, checksum: invalid """
+
+        testcase = '34555555555555558'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_94(self):
+        """ Extended partition testing - length: 17 or more,
+        prefix: 35-36, checksum: valid """
+
+        testcase = '36563656365636564'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_95(self):
+        """ Extended partition testing - length: 17 or more,
+        prefix: 35-36, checksum: invalid """
+
+        testcase = '36563656365636567'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_96(self):
+        """ Extended partition testing - length: 17 or more,
+        prefix: 37, checksum: valid """
+
+        testcase = '37888888888888887'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_97(self):
+        """ Extended partition testing - length: 17 or more,
+        prefix: 37, checksum: invalid """
+
+        testcase = '37888888888888888'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
 
 if __name__ == '__main__':
     unittest.main()
