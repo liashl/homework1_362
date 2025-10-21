@@ -484,6 +484,22 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertTrue(result)
 
+    def test_55a(self):
+        """ Edge case testing - prefix 2221,
+        checksum: invalid, length: 16, expects False """
+
+        testcase = '2221000000000007'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_55b(self):
+        """ Edge case testing - prefix 2221,
+        checksum: valid, length: 15, expects False """
+
+        testcase = '222100000000000'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
     def test_56(self):
         """ Edge case testing - prefix 2720,
         checksum: valid, length: 16, expects True """
@@ -491,6 +507,22 @@ class BlackBoxTest(unittest.TestCase):
         testcase = '2720000000000005'
         result = credit_card_validator(testcase)
         self.assertTrue(result)
+    
+    def test_56a(self):
+        """ Edge case testing - prefix 2720,
+        checksum: invalid, length: 16, expects False """
+
+        testcase = '2720000000000003'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_56b(self):
+        """ Edge case testing - prefix 2720,
+        checksum: valid, length: 15, expects False """
+
+        testcase = '272000000000001'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
 
     def test_57(self):
         """ Edge case testing - prefix 51,
@@ -500,6 +532,22 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertTrue(result)
 
+    def test_57a(self):
+        """ Edge case testing - prefix 51,
+        checksum: invalid, length: 16, expects False """
+
+        testcase = '5151515151515153'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_57b(self):
+        """ Edge case testing - prefix 51,
+        checksum: valid, length: 15, expects False """
+
+        testcase = '515151511515156'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
     def test_58(self):
         """ Edge case testing - prefix 55,
         checksum: valid, length: 16, expects True """
@@ -508,9 +556,25 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertTrue(result)
 
+    def test_58a(self):
+        """ Edge case testing - prefix 55,
+        checksum: invalid, length: 16, expects False """
+
+        testcase = '5599999999999999'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_58b(self):
+        """ Edge case testing - prefix 55,
+        checksum: valid, length: 15, expects False """
+
+        testcase = '559999999999996'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
     def test_59(self):
         """ Edge case testing - checksum with high values
-        checksum: valid, lenght: 16, prefix: 4, expects: True """
+        checksum: valid, length: 16, prefix: 4, expects: True """
 
         testcase = '4999999999999996'
         result = credit_card_validator(testcase)
@@ -524,6 +588,14 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertTrue(result)
 
+    def test_61(self):
+        """ Error guessing - two things should generate False,
+        length: 16, prefix: 33, checksum: False """
+
+        testcase = '3333333333333333'
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+        
 
 if __name__ == '__main__':
     unittest.main()
