@@ -17,7 +17,7 @@ class BlackBoxTest(unittest.TestCase):
         """ Partition testing -- Length: Under Fourteen,
         Expects False """
 
-        testcase: '0'
+        testcase = '0'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
@@ -159,7 +159,7 @@ class BlackBoxTest(unittest.TestCase):
         """ Partition testing -- Length: Fifteen,
         Prefix: 4, Checksum: Valid, Expects False """
 
-        testcase: '411111111111116'
+        testcase = '411111111111116'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
