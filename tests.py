@@ -241,6 +241,76 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
+    def test28(self):
+        """ Length == 16. Prefix == 4. Luhn Sum == 0 """
+
+        testcase = "4112411241124110"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test29(self):
+        """ Tests Length == 16. Prefix == 4. Luhn Sum == 1 """
+
+        testcase = "4235423542354231"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test30(self):
+        """ Tests Length == 16. Prefix == 4. Luhn Sum == 2 """
+
+        testcase = "4678432746784782"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test31(self):
+        """ Tests Length == 16. Prefix == 4. Luhn Sum == 3 """
+
+        testcase = "4367436743674363"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test32(self):
+        """ Tests Length == 16. Prefix == 4. Luhn Sum == 4 """
+
+        testcase = "4567198744277764"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test33(self):
+        """ Tests Length == 16. Prefix == 4. Luhn Sum == 5 """
+
+        testcase = "4789478947894785"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test34(self):
+        """ Tests Length == 16. Prefix == 4. Luhn Sum == 6 """
+
+        testcase = "4990499049904996"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test35(self):
+        """ Tests Length == 16. Prefix == 4. Luhn Sum == 7 """
+
+        testcase = "4321432143214327"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test36(self):
+        """ Tests Length == 16. Prefix == 4. Luhn Sum == 8 """
+
+        testcase = "4777777777777778"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test37(self):
+        """ Tests Length == 16. Prefix == 4. Luhn Sum == 9 """
+
+        testcase = "4204482779974829"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
 
 if __name__ == '__main__':
     unittest.main()
