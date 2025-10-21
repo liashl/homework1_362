@@ -24,7 +24,7 @@ class BlackBoxTest(unittest.TestCase):
     def test_1(self):
         """ Partition testing -- Length: Under Fourteen,
         Expects False """
-        
+
         testcase = '4567890'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
