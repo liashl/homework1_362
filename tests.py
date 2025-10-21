@@ -292,21 +292,24 @@ class BlackBoxTest(unittest.TestCase):
         self.assertEqual(result, False)
 
     def test25(self):
-        """ Length == 15. Tests otherwise valid number with prefix less than 34. Expects False """
+        """ Length == 15. Tests otherwise valid number with prefix less than 34. 
+        Expects False """
 
         testcase = '234523452345233'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test26(self):
-        """ Length == 15. Tests otherwise valid number with prefix between 34 and 37 exclusive. Expects false """
+        """ Length == 15. Tests otherwise valid number with prefix between 34 and 37 exclusive. 
+        Expects false """
 
         testcase = '357935793579356'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test27(self):
-        """ Length == 15. Tests otherwise valid number with prefix greater than 37. Expects False. """
+        """ Length == 15. Tests otherwise valid number with prefix greater than 37. 
+        Expects False. """
 
         testcase = '456745674567457'
         result = credit_card_validator(testcase)
@@ -432,8 +435,8 @@ class BlackBoxTest(unittest.TestCase):
         self.assertTrue(result)
 
     def test45(self):
-        """ Tests Length == 16. Prefix == 52. Luhn Sum is 6"""
-        
+        """ Tests Length == 16. Prefix == 52. Luhn Sum is 6 """
+
         testcase = "5131166612384446"
         result = credit_card_validator(testcase)
         self.assertTrue(result)
@@ -481,42 +484,48 @@ class BlackBoxTest(unittest.TestCase):
         self.assertFalse(result)
 
     def test52(self):
-        """ Testing Length == 15. Prefix is 2720. Checksum is valid. Expects False because wrong prefix """
+        """ Testing Length == 15. Prefix is 2720. Checksum is valid. 
+        Expects False because wrong prefix """
 
         testcase = "272056785678569"
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test53(self):
-        """ Testing Length == 15. Prefix is 51. Checksum is valid. Expects False because wrong prefix """
+        """ Testing Length == 15. Prefix is 51. Checksum is valid. 
+        Expects False because wrong prefix """
 
         testcase = "516751675167519"
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test54(self):
-        """ Testing Length == 15. Prefix is 4. Checksum is valid. Expects False because wrong prefix """
+        """ Testing Length == 15. Prefix is 4. Checksum is valid. 
+        Expects False because wrong prefix """
 
         testcase = "415641564156412"
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test55(self):
-        """ Testing Length == 15. Prefix is 55. Checksum is valid. Expects False because wrong prefix """
+        """ Testing Length == 15. Prefix is 55. Checksum is valid. 
+        Expects False because wrong prefix """
 
         testcase = "556755675567553"
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test56(self):
-        """ Testing Length = 16. Prefix is 34. Checksum is valid. Expects False because wrong prefix """
+        """ Testing Length = 16. Prefix is 34. Checksum is valid. 
+        Expects False because wrong prefix """
 
         testcase = "3456345634563458"
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test57(self):
-        """ Testing Length == 16. Prefix is 37. Checksum is valid. Expects False because wrong prefix """
+        """ Testing Length == 16. Prefix is 37. Checksum is valid. 
+        Expects False because wrong prefix """
 
         testcase = "3745374537453741"
         result = credit_card_validator(testcase)
