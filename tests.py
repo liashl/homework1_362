@@ -103,7 +103,7 @@ class BlackBoxTest(unittest.TestCase):
 
         testcase = "389389389389386"
         result = credit_card_validator(testcase)
-        self.assertFalse
+        self.assertFalse(result)
 
     def test_06_e(self):
         """ Partition testing: variable 'length': L = 15. variable 'prefix': P > 40.
@@ -167,7 +167,7 @@ class BlackBoxTest(unittest.TestCase):
         """ Partition testing: variable 'length': L = 16.
             Variable 'prefix': 51 <= P <= 55.
             Expects True """
-        
+      
         testcase = "5201234567890125"
         result = credit_card_validator(testcase)
         self.assertTrue(result)
@@ -543,6 +543,7 @@ class BlackBoxTest(unittest.TestCase):
         testcase = "3745374537453741"
         result = credit_card_validator(testcase)
         self.assertFalse(result)
+
 
 if __name__ == '__main__':
     unittest.main()
