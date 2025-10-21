@@ -895,7 +895,7 @@ class BlackBoxTest(unittest.TestCase):
         self.assertFalse(result)
 
     def test_99(self):
-        """ Extended partition testing - length: 17 or more, 
+        """ Extended partition testing - length: 17 or more,
         prefix: 38-39, checksum: invalild """
 
         testcase = '39999999999999995'
