@@ -477,7 +477,7 @@ class BlackBoxTest(unittest.TestCase):
         self.assertFalse(result)
 
     def test_55(self):
-        """ Edge case testing - prefix 2221, 
+        """ Edge case testing - prefix 2221,
         checksum: valid, length: 16, expects True """
 
         testcase = '2221000000000009'
@@ -485,7 +485,7 @@ class BlackBoxTest(unittest.TestCase):
         self.assertTrue(result)
 
     def test_56(self):
-        """ Edge case testing - prefix 2720, 
+        """ Edge case testing - prefix 2720,
         checksum: valid, length: 16, expects True """
 
         testcase = '2720000000000005'
@@ -501,7 +501,7 @@ class BlackBoxTest(unittest.TestCase):
         self.assertTrue(result)
 
     def test_58(self):
-        """ Edge case testing - prefix 55, 
+        """ Edge case testing - prefix 55,
         checksum: valid, length: 16, expects True """
 
         testcase = '5599999999999997'
@@ -523,7 +523,6 @@ class BlackBoxTest(unittest.TestCase):
         testcase = '4000000000000002'
         result = credit_card_validator(testcase)
         self.assertTrue(result)
-
 
 
 if __name__ == '__main__':
