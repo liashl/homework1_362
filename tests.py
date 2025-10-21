@@ -57,6 +57,62 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertTrue(result)
 
+    def test_02c(self):
+        """ Partition Testing: variable 'length': L = 16
+        Valid Checksum. Valid prefix (2222). Expects True """
+
+        testcase = "2222222222222224"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test_02d(self):
+        """ Partition Testing: variable 'length': L = 16
+        Valid checksum. Valid prefix (53). Expects True """
+
+        testcase = "5314531453145314"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test_02e(self):
+        """ Partition Testing / Boundary case. Variable 'length':
+        L = 16. Valid Checksum. Valid prefix (2221). Expects True """
+
+        testcase = "2221987798769870"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test_02f(self):
+        """ Partition testing / Boundary case. Variable 'length':
+        L = 16. Valid checksum. Valid prefix (2720). Expects True """
+
+        testcase = "2720887887887003"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test_02g(self):
+        """ Partition testing / Boundary case. Variable 'length':
+        L = 16. Valid checksum. Valid prefix (51). Expects True """
+
+        testcase = "5151515151515155"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test_02h(self):
+        """ Partition testing / Boundary case. Variable 'length':
+        L = 16. Valid checksum. Valid prefix (55). Expects True """
+
+        testcase = "5543554355435545"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test_02i(self):
+        """ Partition testing / Boundary case. Variable 'length':
+        L = 16. Invalid checksum. Valid prefix (55). Expects False """
+
+        testcase = "5543554355435547"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
     def test_04(self):
         """ Partition testing: variable 'length': L = 15. variable 'prefix': 0 < P < 30.
         Expects False """
