@@ -395,5 +395,19 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
+    def test50(self):
+        """ Boundary testing. Lenght == 15. Prefix is 35. Checksum is Invalid """
+
+        testcase = "356735673567356"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test51(self):
+        """ Testing Length == 15. Prefix is 35. Checksum is valid """
+
+        testcase = "356735673567351"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
 if __name__ == '__main__':
     unittest.main()
