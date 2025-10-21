@@ -617,7 +617,7 @@ class BlackBoxTest(unittest.TestCase):
     def test_64(self):
         """" Extended partition testing - length: under 14,
         prefix: 2221 to 2720, checksum: valid """
-        
+
         testcase = '2222222222'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
@@ -779,6 +779,14 @@ class BlackBoxTest(unittest.TestCase):
         prefix: 34, checksum: valid """
 
         testcase = '34555555555559'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_85(self):
+        """ Edge case testing - length: 14,
+        prefix: 37, checksum: valid """
+
+        testcase = '37893789378978'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
