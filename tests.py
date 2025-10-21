@@ -14,53 +14,103 @@ class BlackBoxTest(unittest.TestCase):
     """ Searching for errors in the implementation of credit card verification function """
 
     def test_01a(self):
-        """ Tests length below 10 digits. Expects False """
+        """ Partition Testing: variable 'length': L < 10. Expects False """
 
         testcase = '760'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test_01b(self): 
-        """ Tests length above 19 digits. Expects False. """
+        """ Partition Testing: variable 'length': L > 19. Expects False. """
 
         testcase = '11111111111111111111111111111111111111111111111118'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test_01(self):
-        """ Test for otherwise valid number greater than 16 digits in length. Expects False """
+        """ Partition Testing: variable 'length': 16 < L < 19. Expects False """
 
-        testcase = '01234567890123452'
+        testcase = '45674567456745676'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test_02(self):
-        """ Test for otherwise valid number less than 15 digits in length. Expects False """
+        """ Partition Testing: variable 'length': 10 < L < 15. Expects False """
 
-        testcase = '01234567890128'
+        testcase = "3456345634563"
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
+    def test_02a(self):
+        """ Partition Testing: variable 'length': L = 15. Valid Checksum. Valid prefix. Expects True """
+
+        testcase = "378937893789377"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test_02b(self):
+        """ Partition Testing: variable 'length': L = 16. Valid Checksum. Valid prefix (4). Expects True """
+
+        testcase = "4123412341234129"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+
     def test_03(self):
-        """ Tests for otherwise valid 16-digit number with prefix > 55. Expects False """
+        """ Partition testing: variable 'length': L = 16. variable 'prefix': P > 55. Expects False """
 
         testcase = '7012345678902347'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
 
     def test_04(self):
-        """ Tests for an otherwise valid 15-digit string that does not start with a 3. Expects False """
+        """ Partition testing: variable 'length': L = 15. variable 'prefix': 0 < P < 30. Expects False """
 
         testcase = '012345678901237'
         result = credit_card_validator(testcase)
-        self.assertEqual(result, False)
+        self.assertFalse(result)
 
     def test_05(self):
-        """ Tests for otherwise valid 15-digit string that starts with 3 but not with 34 or 37. Expects False """
+        """ Partition Testing: variable 'length': L = 15. variable 'prefix': 30 < P < 34. Expects False """
 
         testcase = '301234567890125'
         result = credit_card_validator(testcase)
-        self.assertEqual(result, False)
+        self.assertFalse(result)
+
+    def test_06_a(self):
+        """ Partition testing: variable 'length': L = 15. variable 'prefix': P = 34. Expects True """
+
+        testcase = "345634563456342"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test_06_b(self):
+        """ Partition testing: variable 'length': L = 15. variable 'prefix': P = 37. Expects True """
+
+        testcase = "372537253725379"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test_06_c(self):
+        """ Partition testing: variable 'length': L = 15. variable 'prefix': 34 < P < 37. Expects False """
+
+        testcase = "367836783678364"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_06_d(self):
+        """ Partition testing: variable 'length': L = 15. variable 'prefix': 37 < P < 40. Expects False """
+
+        testcase = "389389389389386"
+        result = credit_card_validator(testcase)
+        self.assertFalse
+
+    def test_06_e(self):
+        """ Partition testing: variable 'length': L = 15. variable 'prefix': P > 40. Expcts False """
+
+        testcase = "999899989998990"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
 
     def test_06(self):
         """ Tests for invalid 16-digit number with prefix between 2221 and 2720 inclusive """
@@ -160,6 +210,7 @@ class BlackBoxTest(unittest.TestCase):
         testcase = "2720012301230124"
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
+
 
     def test_15(self):
         """ Test for valid prefix with incorrect length (4, 15 digits) """
