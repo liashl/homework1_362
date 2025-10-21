@@ -158,7 +158,7 @@ class BlackBoxTest(unittest.TestCase):
             Variable 'length': L = 16. 
             Variable 'prefix': 51 <= P <= 55. 
             Expects False """
-
+        
         testcase = "5201234567890127"
         result = credit_card_validator(testcase)
         self.assertFalse(result)
@@ -224,7 +224,7 @@ class BlackBoxTest(unittest.TestCase):
 
         testcase = "340123456789012"
         result = credit_card_validator(testcase)
-        self.assertEqual(result, True)
+        self.assertFalse(result)
 
     def test_11(self):
         """ Tests for a valid 15-digit number that begins with the prefix 34 """
