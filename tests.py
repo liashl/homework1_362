@@ -437,5 +437,19 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
+    def test56(self):
+        """ Testing Length = 16. Prefix is 34. Checksum is valid. Expects False because wrong prefix """
+
+        testcase = "3456345634563458"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test57(self):
+        """ Testing Length == 16. Prefix is 37. Checksum is valid. Expects False because wrong prefix """
+
+        testcase = "3745374537453741"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
 if __name__ == '__main__':
     unittest.main()
