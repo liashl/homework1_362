@@ -600,6 +600,41 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
+    def test_079(self):
+        """ Error guessing: invalid checksum with valid prefix & length: visa """
+
+        testcase = "4567456745674567"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_080(self):
+        """ Error guessing: invalid checksum with valid prefix & length: mastercard (a) """
+
+        testcase = "2221567856789876"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_081(self):
+        """ Error guessing: invalid checksum with valid prefix and length: mastercard (b) """
+
+        testcase = "5478547854785478"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_082(self):
+        """ Error guessing: invalid checksum with valid prefix and length: amex (a) """
+
+        testcase = "341111441155223"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test_083(self):
+        """ Error guessing: invalid checksum with valid prefix and length: amex (b) """
+
+        testcase = "374537999999764"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
 
 if __name__ == '__main__':
     unittest.main()
