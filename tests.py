@@ -106,24 +106,20 @@ class BlackBoxTest(unittest.TestCase):
         self.assertFalse(result)
 
     def test_06(self):
-        """ 
-        Partition testing: variable 'length': L = 16. 
+        """ Partition testing: variable 'length': L = 16. 
             variable 'prefix': 2221 <= P <= 2720. 
             Variable validity: V = False 
-            Expects False 
-        """
+            Expects False """
 
         testcase = '2221111111111111'
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test_07(self):
-        """ 
-        Partition testing: variable 'length': L = 16
+        """ Partition testing: variable 'length': L = 16
             variable 'prefix': 2221 <= P <= 2720. 
             variable 'validity': V = True
-            Expects True
-        """
+            Expects True"""
 
         testcase = "2222111111111160"
         result = credit_card_validator(testcase)
@@ -220,28 +216,28 @@ class BlackBoxTest(unittest.TestCase):
 
 
     def test_11_a(self):
-        """ Tests for an invalid 15-digit number that begins with the prefix 34. Expects False"""
+        """ Partition testing. Tests for an invalid 15-digit number that begins with the prefix 34. Expects False"""
 
         testcase = "340123456789012"
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test_11(self):
-        """ Tests for a valid 15-digit number that begins with the prefix 34 """
+        """ Partition testing. Tests for a valid 15-digit number that begins with the prefix 34 """
 
         testcase = "340123456789014"
         result = credit_card_validator(testcase)
         self.assertEqual(result, True)
 
     def test_12_a(self):
-        """ Tests for an invalid 15-digit number that begins with the prefix 37. Expects False """
+        """ Partition testing. Tests for an invalid 15-digit number that begins with the prefix 37. Expects False """
 
         testcase = "370123456789016"
         result = credit_card_validator(testcase)
         self.assertFalse(result)
 
     def test_12(self):
-        """ Tests for a valid 15-digit number that begins with the prefix 37 """
+        """ Partition testing. Tests for a valid 15-digit number that begins with the prefix 37 """
 
         testcase = "370123456789017"
         result = credit_card_validator(testcase)
@@ -303,8 +299,6 @@ class BlackBoxTest(unittest.TestCase):
         testcase = '4125687345680096'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
-
-    
 
     def test25(self):
         """ Length == 15. Tests otherwise valid number with prefix less than 34. Expects False """
