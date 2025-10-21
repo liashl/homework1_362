@@ -311,6 +311,89 @@ class BlackBoxTest(unittest.TestCase):
         result = credit_card_validator(testcase)
         self.assertTrue(result)
 
+    def test38(self):
+        """ tests Length == 16. Prefix == 4. Luhn Sum is invalid """
+
+        testcase = "4204482779974828"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test39(self):
+        """ Tests Length == 16. Prefix == 51. Luhn Sum is 0"""
+
+        testcase = "5136666612384440"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test41(self):
+        """ Tests Length == 16. Prefix == 51. Luhn Sum is 1 """
+
+        testcase = "5100512513277121"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test42(self):
+        """ Tests Length == 16. Prefix == 51. Luhn Sum is 2 """
+
+        testcase = "5111111331111112"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test42(self):
+        """ Tests Length == 16. Prefix == 51. Luhn Sum is 3 """
+
+        testcase = "5177891729994853"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test43(self):
+        """ Tests Length == 16. Prefix == 51. Luhn Sum is 4 """
+
+        testcase = "5110085331119914"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test44(self):
+        """ Tests Length == 16. Prefix == 51. Luhn Sum is 5 """
+
+        testcase = "5100000000110005"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test45(self):
+        """ Tests Length == 16. Prefix == 52. Luhn Sum is 6"""
+        
+        testcase = "5131166612384446"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test46(self):
+        """ Tests Length == 16. Prefix == 51. Luhn Sum is 7 """
+
+        testcase = "5123512351235127"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test47(self):
+        """ Tests Length == 16. Prefix == 51. Luhn Sum is 8 """
+
+        testcase = "5178517851785178"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test48(self):
+        """ Tests Length == 16. Prefix == 51. Luhn Sum is 9 """
+
+        testcase = "5199519951995199"
+        result = credit_card_validator(testcase)
+        self.assertTrue(result)
+
+    def test49(self):
+        """ tests Length == 16. Prefix == 51. Luhn Sum is invalid. Expects False """
+
+        testcase = "5199519951995190"
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
 
 if __name__ == '__main__':
     unittest.main()
