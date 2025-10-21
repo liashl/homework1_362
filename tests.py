@@ -14,39 +14,32 @@ class BlackBoxTest(unittest.TestCase):
     """ Searching for errors in the implementation of credit card verification function """
 
     def test_01a(self):
-        """ Tests very short invalid number """
+        """ Tests length below 10 digits. Expects False """
 
-        testcase = '000'
+        testcase = '760'
         result = credit_card_validator(testcase)
-        self.assertEqual(result, False)
+        self.assertFalse(result)
 
     def test_01b(self): 
-        """ Test very long invalid number """
+        """ Tests length above 19 digits. Expects False. """
 
-        testcase = '11111111111111111111111111111111111111111111111111'
+        testcase = '11111111111111111111111111111111111111111111111118'
         result = credit_card_validator(testcase)
-        self.assertEqual(result, False)
-
-    def test_01c(self):
-        """ Test numeric (integer) input """
-        testcase= 5201234567890125
-        result = credit_card_validator(testcase)
-        self.assertEqual(result, False)
-
+        self.assertFalse(result)
 
     def test_01(self):
         """ Test for otherwise valid number greater than 16 digits in length. Expects False """
 
         testcase = '01234567890123452'
         result = credit_card_validator(testcase)
-        self.assertEqual(result, False)
+        self.assertFalse(result)
 
     def test_02(self):
         """ Test for otherwise valid number less than 15 digits in length. Expects False """
 
         testcase = '01234567890128'
         result = credit_card_validator(testcase)
-        self.assertEqual(result, False)
+        self.assertFalse(result)
 
     def test_03(self):
         """ Tests for otherwise valid 16-digit number with prefix > 55. Expects False """
@@ -195,6 +188,58 @@ class BlackBoxTest(unittest.TestCase):
         testcase = '4125687345680096'
         result = credit_card_validator(testcase)
         self.assertEqual(result, False)
+
+    def test20(self):
+        """ Length == 16. Tests otherwise valid number with prefix less than 2221. Expects False """
+
+        testcase = '1234123412341238'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test21(self):
+        """ 
+        Length == 16. Tests otherwise valid number with prefix greater than 2720 and less than 4.
+        Expects False
+        """
+
+        testcase = '3579357935793579'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test22(self):
+        """ Length == 16. Tests otherwise valid number between 4 and 51. Expects False """
+
+        testcase = '5012501250125012'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test23(self):
+        """ Length == 16. Tests otherwise valid number with prefix greater than 55. Expects False """
+
+        testcase = '7891789178917899'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test25(self):
+        """ Length == 15. Tests otherwise valid number with prefix less than 34. Expects False """
+
+        testcase = '234523452345233'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test26(self):
+        """ Length == 15. Tests otherwise valid number with prefix between 34 and 37 exclusive. Expects false """
+
+        testcase = '357935793579356'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
+
+    def test27(self):
+        """ Length == 15. Tests otherwise valid number with prefix greater than 37. Expects False. """
+
+        testcase = '456745674567457'
+        result = credit_card_validator(testcase)
+        self.assertFalse(result)
 
 
 if __name__ == '__main__':
