@@ -167,7 +167,7 @@ class BlackBoxTest(unittest.TestCase):
         """ Partition testing: variable 'length': L = 16.
             Variable 'prefix': 51 <= P <= 55.
             Expects True """
-      
+
         testcase = "5201234567890125"
         result = credit_card_validator(testcase)
         self.assertTrue(result)
@@ -313,7 +313,7 @@ class BlackBoxTest(unittest.TestCase):
         self.assertFalse(result)
 
     def test26(self):
-        """ Length == 15. Tests otherwise valid number with prefix between 34 and 37 exclusive. 
+        """ Length == 15. Tests otherwise valid number with prefix between 34 and 37 exclusive.
         Expects false """
 
         testcase = '357935793579356'
